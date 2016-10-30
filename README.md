@@ -1,18 +1,35 @@
-# JAVA083
-# JAVA081
-public class Brandname<T> {
-	public static void main(String[] args){
-		Brandname<String> bd=new Brandname<String>();
-		bd.add("xyz");
-		System.out.println("the values are: "+bd);
-	}
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+ 
+public class Copy
+{
+    public static void main(String[] args)
+    {	
+    	FileInputStream instream = null;
+	FileOutputStream outstream = null;
+ 
+    	try{
+    	    File infile =new File("C:\\file1.txt");
+    	    File outfile =new File("C:\\file2.txt");
+ 
+    	    instream = new FileInputStream(infile);
+    	    outstream = new FileOutputStream(outfile);
+ 
+    	    byte[] buffer = new byte[1024];
+ 
+    	    int length;
+    	      	    while ((length = instream.read(buffer)) > 0){
+    	    	outstream.write(buffer, 0, length);
+    	    }
+    	    instream.close();
+    	    outstream.close();
 
-	private void add(String string) {
-		// TODO Auto-generated method stub
-		
-	}
+    	    System.out.println("File copied successfully!!");
+ 
+    	}catch(IOException ioe){
+    		ioe.printStackTrace();
+    	 }
+    }
 }
-
-
-
-NOT UNERSTAND PLEASE HELP ME OUT
